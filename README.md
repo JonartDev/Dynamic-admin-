@@ -75,6 +75,17 @@ NOTE: delete storage folder in public before running #6.
 7. Run `php artisan storage:link` to create the storage symlink (if you are using **Vagrant** with **Homestead** for development, remember to ssh into your virtual machine and run the command from there).
 8. Go to database>seeders>DatabaseSeeder.php to get the credentials.
 
+when error image upload occur, user these commands:
+php -i | grep 'session'
+sudo chown -R www-data:www-data /data/www/xz01716vip/storage
+sudo chown -R www-data:www-data /data/www/xz01716vip/bootstrap/cache
+
+sudo find /data/www/xz01716vip/storage -type f -exec chmod 664 {} \;
+sudo find /data/www/xz01716vip/storage -type d -exec chmod 775 {} \;
+sudo find /data/www/xz01716vip/bootstrap/cache -type f -exec chmod 664 {} \;
+sudo find /data/www/xz01716vip/bootstrap/cache -type d -exec chmod 775 {} \;
+
+
 ## Usage
 Register a user or login with default user **admin@softui.com** and password **secret** from your database and start testing (make sure to run the migrations and seeders for these credentials to be available).
 

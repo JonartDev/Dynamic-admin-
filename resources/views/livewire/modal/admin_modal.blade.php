@@ -8,6 +8,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" wire:click="closeModal" aria-label="Close"><i class="fas fa-close text-secondary text-sm"></i></button>
             </div>
             <form wire:submit.prevent="updateAdmin">
+                @csrf
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-6">

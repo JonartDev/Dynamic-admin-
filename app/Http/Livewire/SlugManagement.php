@@ -119,7 +119,23 @@ class SlugManagement extends Component
     }
     public function render()
     {
-        $slugsPaginator = Slug::paginate(5);
+        $slugsPaginator = Slug::where(function ($query) {
+            $query
+                ->where(function ($subQuery) {
+                    $subQuery->where('name', 'like', '%' . $this->search . '%')
+                        ->orWhere('slug', 'like', '%' . $this->search . '%')
+                        ->orWhere('code', 'like', '%' . $this->search . '%')
+                        ->orWhere(function ($query) {
+                            if (strtolower($this->search) === 'active') {
+                                $query->where('status', 1);
+                            } elseif (strtolower($this->search) === 'inactive') {
+                                $query->where('status', 0);
+                            } else {
+                                $query->where('status', 'like', '%' . $this->search . '%');
+                            }
+                        });
+                });
+        })->orderBy('id')->paginate(5);
         $this->slugsData = $slugsPaginator->items();
 
         return view('livewire.slug-management',
