@@ -1,0 +1,406 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+img{
+    width: 100%;
+    height: auto;
+}
+/* LOGO */
+main{
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: #151d28;
+  }
+  .main-container{
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 0 20px;
+    background-color: #151d28;
+    position: relative;
+  }
+  .logo{
+    width: 200px;
+  }
+.logo-container{
+    width: 100%;
+    max-height: 100px;
+    background-color: black;
+    text-align: center;
+    padding: 10px 0;
+}
+    .csr {
+        position: fixed; /* Keep the element fixed on the screen */
+        z-index: 10;
+        right: calc((100vw - 500px) / 2 + 10px); /* Calculate right position dynamically */
+        top: 100px;
+        width: 80px;
+        height: 80px;
+    }
+  /* SLIDER CSS */
+  .slider__container{
+    min-height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .slide-container{
+    max-width: 1120px;
+    width: 100%;
+    padding: 40px 0;
+  }
+  .slide-content{
+    margin: 0 40px;
+    overflow: hidden;
+    border-radius: 25px;
+  }
+  .card{
+    border-radius: 25px;
+    width: 100%;
+    height: auto;
+    /* background-color: #FFF; */
+  }
+  .image-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 50%;
+    padding: 10px 14px;
+  }
+  .image-content{
+    position: relative;
+    row-gap: 5px;
+    padding: 25px 0;
+  }
+  .overlay{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-color: #4070F4;
+    border-radius: 25px 25px 0 25px;
+  }
+  .overlay::before,
+  .overlay::after{
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: -40px;
+    height: 40px;
+    width: 40px;
+    background-color: #4070F4;
+  }
+  .overlay::after{
+    border-radius: 0 25px 0 0;
+    /* background-color: #FFF; */
+  }
+  .card-image{
+    position: relative;
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    /* background: #FFF; */
+    padding: 3px;
+  }
+  .card-img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+  .name{
+    font-size: 18px;
+    font-weight: 500;
+    color: #333;
+  }
+  .description{
+    font-size: 14px;
+    color: #707070;
+    text-align: center;
+  }
+  .button{
+    border: none;
+    font-size: 16px;
+    color: #FFF;
+    padding: 8px 16px;
+    background-color: #4070F4;
+    border-radius: 6px;
+    margin: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  .button:hover{
+    background: #265DF2;
+  }
+  
+  .swiper-navBtn{
+    color: #6E93f7;
+    transition: color 0.3s ease;
+  }
+  .swiper-navBtn:hover{
+    color: #4070F4;
+  }
+  .swiper-navBtn::before,
+  .swiper-navBtn::after{
+    font-size: 35px;
+  }
+  .swiper-button-next{
+    right: 0;
+  }
+  .swiper-button-prev{
+    left: 0;
+  }
+  .swiper-pagination-bullet{
+    background-color: #6E93f7;
+    opacity: 1;
+  }
+  .swiper-pagination-bullet-active{
+    background-color: #4070F4;
+  }
+
+  .app-lists{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  .game-one{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  .game-two{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .comments{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .footer-container{
+    width: 100%;
+    max-height: 200px;
+    background-color: black;
+    text-align: center;
+}
+.button-container{
+    width: 500px;
+    max-height: 200px;
+    background-color: black;
+    text-align: center;
+    padding: 20px 0;
+    display: flex;
+    gap: 10px;
+    justify-content: space-around;
+    position: fixed;
+    right: calc((100vw - 500px) / 2 + -9px); /* Calculate right position dynamically */
+    bottom: 0;
+    z-index: 10;
+}
+
+.btn-1, .btn-2 {
+    width: 200px ;
+    height: auto;
+}
+
+/* MODAL */
+/* Styles for the modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+  
+  /* Modal content */
+  .modal-content {
+    margin: auto auto; 
+    padding: 10px 20px;
+    border: 2px solid #ffffff;
+    border-radius: 20px;
+    width: 100%; 
+    max-width: 450px;
+    height: fit-content;
+    box-sizing: border-box;
+  }
+  .ping{
+    width: 40px;
+    height: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+  }
+  .signal-container{
+    width: 40px;
+    height: 40px;
+    /* background-color: white; */
+    display: flex;
+    align-items: end;
+    justify-content: space-around;
+  }
+
+  .signal-bar-1 {
+     width: 5px;
+     height: 15px;
+     border-radius: 20px;
+     background-color: rgb(4, 190, 2);
+     z-index: 1000;
+  }
+  .signal-bar-2 {
+    width: 5px;
+    height: 25px;
+    border-radius: 20px;
+    background-color: rgb(4, 190, 2);
+    z-index: 1000;
+ }
+ .signal-bar-3 {
+    width: 5px;
+    height: 35px;
+    border-radius: 20px;
+    background-color: rgb(4, 190, 2);
+    z-index: 1000;
+ }
+ .ms-text{
+    color: rgb(4, 190, 2);
+ }
+.link-button{
+    background-color: #1678ff;
+    color: white;
+    padding: 10px 10px;
+    border-radius: 10px;
+}
+.link-item{
+    display: none;
+    width: 90%;
+    justify-content: space-between;
+    align-items: center;
+}
+.links-container{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    gap: 30px;
+    padding: 10px 0;
+}
+  .apple-icon{
+    width: 30px;
+    height: 30px;
+  }
+  .link{
+    width: 80%;
+    display: flex; 
+    justify-content: center;
+    gap: 10px;
+    align-items: center;
+    border: 2px solid white;
+    border-radius: 10px;
+    padding: 10px 0;
+  }
+  .link-text{
+    color: white;
+  }
+  /* Close button */
+  .close-button {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    bottom: -80px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    border: 4px solid white;
+    border-radius: 50%;
+    padding: 10px 18px;
+  }
+  
+  .view-more-btn{
+    background-color: #1678ff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    position: absolute;
+    top: -80px;
+    right: 20px;
+    /* transform: translate(-50%, 0); */
+  }
+  .close-button:hover,
+  .close-button:focus {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+
+#viewMoreBtn {
+    display: block; /* Show button initially */
+    margin-top: 20px;
+}
+
+@media screen and (max-width: 768px) {
+    .slide-content{
+      margin: 0 10px;
+    }
+    .swiper-navBtn{
+      display: none;
+    }
+    .csr {
+        position: fixed; /* Keep the element fixed on the screen */
+        z-index: 10;
+        /* right: calc((100vw - 350px) / 2 + 10px); */
+        right: 10px;
+        top: 100px;
+        width: 60px;
+        height: 60px;
+    }
+    .button-container{
+        width: 100%;
+        max-height: 180px;
+        background-color: black;
+        text-align: center;
+        display: flex;
+        gap: 10px;
+        /* right: calc((100svw - 350px) / 2 + -9px);  */
+        left: 0;
+        bottom: 0;
+        justify-content: space-around;
+    }
+    .btn-1, .btn-2 {
+        width: 150px;
+        height: auto;
+    }
+    .modal-content {
+        margin: auto auto; 
+        padding: 10px 20px;
+        border: 2px solid #ffffff;
+        border-radius: 20px;
+        width: 90%; 
+        max-width: 450px;
+        height: fit-content;
+        box-sizing: border-box;
+      }
+  }
+  
+  
