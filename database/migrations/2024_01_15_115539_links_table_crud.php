@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('links', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('slug')->nullable();
             $table->string('links')->nullable();
             $table->string('category')->nullable();
             $table->string('image_path')->nullable();

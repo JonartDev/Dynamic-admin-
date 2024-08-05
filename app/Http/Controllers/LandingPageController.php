@@ -24,9 +24,31 @@ class LandingPageController extends Controller
     {
         $admin = Admin::all();
         $slugData = Slug::where('slug', $slug)->firstOrFail();
-        $buttons = Links::where("category", 'button')->where('status', 1)->orderBy('order_number')->orderBy('_group')->get();
-        $links = Links::where("category", 'link')->where('status', 1)->orderBy('order_number')->orderBy('_group')->get();
-        $banner = Links::where("category", 'banner')->where('status', 1)->orderBy('order_number')->orderBy('_group')->get();
+
+        $slugName = Slug::all()
+            ->where('slug', $slug)
+            ->pluck('name');
+
+        $buttons = Links::where('category', 'button')
+            ->where('status', 1)
+            ->where('slug', $slugName[0])
+            ->orderBy('order_number')
+            ->orderBy('_group')
+            ->get();
+
+        $links = Links::where('category', 'link')
+            ->where('status', 1)
+            ->where('slug', $slugName[0])
+            ->orderBy('order_number')
+            ->orderBy('_group')
+            ->get();
+            
+        $banner = Links::where('category', 'banner')
+            ->where('status', 1)
+            ->where('slug', $slugName[0])
+            ->orderBy('order_number')
+            ->orderBy('_group')
+            ->get();
 
         return view('index', compact('admin', 'buttons', 'links', 'banner', 'slugData'));
     }

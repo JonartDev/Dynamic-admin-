@@ -6,6 +6,7 @@ use Livewire\WithPagination;
 use Livewire\Component;
 use App\Models\Links;
 use Livewire\WithFileUploads;
+use App\Models\Slug;
 
 class Buttons extends Component
 {
@@ -20,6 +21,7 @@ class Buttons extends Component
     public $buttonsData;
     public $buttonDetails;
     public $_group = 'android'; // default selected value
+    public $slug, $SelectedSlug;
 
     // protected function rules()
     // {
@@ -36,6 +38,7 @@ class Buttons extends Component
         '_group' => 'required',
         'order_number' => 'numeric|required',
         // 'image_path' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'SelectedSlug' => 'required'
     ];
 
     public function saveButton()
@@ -43,6 +46,7 @@ class Buttons extends Component
         $this->validate();
         $saveData = [
             'name' => $this->name,
+            'slug' => $this->SelectedSlug,
             'links' => $this->buttons,
             'category' => 'button',
             '_group' => $this->_group,
@@ -71,6 +75,7 @@ class Buttons extends Component
         $this->validate();
         $updateData = [
             'name' => $this->name,
+            'slug' => $this->SelectedSlug,
             'links' => $this->buttons,
             'category' => 'button',
             '_group' => $this->_group,
@@ -95,6 +100,7 @@ class Buttons extends Component
         $button = Links::findOrFail($button_id);
         if ($button) {
             $this->button_id = $button->id;
+            $this->SelectedSlug = $button->slug;
             $this->name = $button->name;
             $this->buttons = $button->links;
             $this->category = $button->category;
@@ -104,6 +110,7 @@ class Buttons extends Component
             $this->order_number = $button->order_number;
             $this->description = $button->description;
         } else {
+            session()->flash('error', 'Button not found.');
             return redirect()->to('/BuddfgsdsaYu');
         }
     }
@@ -158,9 +165,12 @@ class Buttons extends Component
             // Fetch your data here, for example from a model
             // $items = YourModel::orderBy($this->sortField, $this->sortDirection)->get();
             'items' => [],
+            'buttonsData' => $this->buttonsData,
+            'buttonsPaginator' => $buttonPaginator,
+            'slug' => $this->slug
         ];
-
-        return view('livewire.buttons', ['buttonsData' => $this->buttonsData], ['buttonsPaginator' => $buttonPaginator], $data);
+        $this->slug = Slug::all();
+        return view('livewire.buttons', $data);
     }
     public function sortBy($field)
     {

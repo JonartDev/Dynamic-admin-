@@ -39,6 +39,9 @@
                                     <th onclick="sortTable(1)" class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         {{ __('translate.group') }}
                                     </th>
+                                    <th onclick="sortTable(1)" class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        {{ __('translate.slug') }}
+                                    </th>
                                     <!-- <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                         Photo
                                     </th> -->
@@ -68,6 +71,9 @@
                                     </td>
                                     <td class="text-center">
                                         <p class="text-xs font-weight-bold mb-0">{{ $button->_group }}</p>
+                                    </td>
+                                    <td class="text-center">
+                                        <p class="text-xs font-weight-bold mb-0">{{ $button->slug }}</p>
                                     </td>
                                     <td class="text-center">
                                         <p class="text-xs font-weight-bold mb-0">{{$button->name}}</p>

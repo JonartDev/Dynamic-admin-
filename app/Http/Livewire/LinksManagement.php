@@ -7,6 +7,7 @@ use Livewire\Component;
 use App\Models\Links;
 use Livewire\WithFileUploads;
 use App\Models\Links_199zx;
+use App\Models\Slug;
 
 class LinksManagement extends Component
 {
@@ -24,6 +25,8 @@ class LinksManagement extends Component
     public $linkDetails;
     public $_group = 'customer_service'; // default selected value
 
+    public $slug, $SelectedSlug;
+
     protected function rules()
     {
         return [
@@ -32,6 +35,7 @@ class LinksManagement extends Component
             '_group' => 'required',
             'order_number' => 'numeric|required',
             // 'image_path' => 'required',
+            'SelectedSlug' => 'required'
         ];
     }
 
@@ -45,6 +49,7 @@ class LinksManagement extends Component
         $this->validate();
         $saveData = [
             'name' => $this->name,
+            'slug' => $this->SelectedSlug,
             'links' => $this->links,
             'category' => 'link',
             'image_path' => 'No Image upload',
@@ -70,6 +75,7 @@ class LinksManagement extends Component
 
         $updateData = [
             'name' => $this->name,
+            'slug' => $this->SelectedSlug,
             'links' => $this->links,
             'category' => 'link',
             '_group' => $this->_group,
@@ -94,6 +100,7 @@ class LinksManagement extends Component
         if ($link) {
             $this->link_id = $link->id;
             $this->name = $link->name;
+            $this->SelectedSlug = $link->slug;
             $this->links = $link->links;
             $this->category = $link->category;
             $this->imagePath = $link->image_path;
@@ -133,6 +140,7 @@ class LinksManagement extends Component
             $query->where('category', '=', 'link')
                 ->where(function ($subQuery) {
                     $subQuery->where('name', 'like', '%' . $this->search . '%')
+                        ->orWhere('slug', 'like', '%' . $this->search . '%')
                         ->orWhere('_group', 'like', '%' . $this->search . '%')
                         ->orWhere('links', 'like', '%' . $this->search . '%')
                         ->orWhere('order_number', 'like', '%' . $this->search . '%')
@@ -149,7 +157,8 @@ class LinksManagement extends Component
         })->orderBy('order_number')->orderBy('_group')->paginate(5);
         // Extract the items from the paginator
         $this->linksData = $linksPaginator->items();
+        $this->slug = Slug::all();
 
-        return view('livewire.links-management', ['linksData' => $this->linksData], ['linksPaginator' => $linksPaginator]);
+        return view('livewire.links-management', ['linksData' => $this->linksData], ['linksPaginator' => $linksPaginator], ['slug' => $this->slug]);
     }
 }

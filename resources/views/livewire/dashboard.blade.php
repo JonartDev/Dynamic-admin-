@@ -11,6 +11,13 @@
                    <h5 class="font-weight-bolder mb-0">
 
                      <span class="text-success text-sm font-weight-bolder">{{ $specs['Total_Links'] }}</span>
+                     <x-test>
+                       <x-slot name="header">
+                         test
+                       </x-slot>
+                         Salita
+                     </x-test>
+
                    </h5>
                  </div>
                </div>

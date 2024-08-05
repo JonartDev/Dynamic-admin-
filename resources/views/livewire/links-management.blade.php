@@ -40,6 +40,30 @@
                         </div>
                     </div>
                     <div class="table-responsive p-0">
+                        <style>
+                            .link-cell {
+                                max-width: 200px;
+                                /* Adjust width as needed */
+                                overflow: hidden;
+                                text-overflow: ellipsis;
+                                white-space: nowrap;
+                            }
+
+                            .link-cell a {
+                                display: block;
+                                text-decoration: none;
+                                color: #007bff;
+                            }
+
+                            .link-cell a:hover {
+                                text-decoration: underline;
+                            }
+
+                            .link-cell a::after {
+                                content: attr(href);
+                                display: none;
+                            }
+                        </style>
                         <table class="table align-items-center mb-0">
                             <thead>
                                 <tr>
@@ -53,9 +77,12 @@
                                         {{ __('translate.group') }}
                                     </th>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        {{ __('translate.name') }}
+                                        {{ __('translate.slug') }}
                                     </th>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        {{ __('translate.name') }}
+                                    </th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 linkbody">
                                         {{ __('translate.link') }}
                                     </th>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -80,10 +107,17 @@
                                         <p class="text-xs font-weight-bold mb-0">{{ $link->_group }}</p>
                                     </td>
                                     <td class="text-center">
-                                        <p class="text-xs font-weight-bold mb-0">{{$link->name}}</p>
+                                        <p class="text-xs font-weight-bold mb-0">{{ $link->slug }}</p>
                                     </td>
                                     <td class="text-center">
-                                        <p class="text-xs font-weight-bold mb-0">{{ $link->links }}</p>
+                                        <p class="text-xs font-weight-bold mb-0">{{$link->name}}</p>
+                                    </td>
+                                    <td class="text-center link-cell w-100">
+                                        <div x-data="{ hover: false }">
+                                            <span x-on:mouseover="hover = true" x-on:mouseout="hover = false"><p class="text-xs font-weight-bold mb-0">{{ $link->links }}</p></span>
+                                            <span x-show="hover">{{ $link->links }}</span>
+                                        </div>
+                                        
                                     </td>
                                     <td class="text-center">
                                         <p class="text-xs font-weight-bold mb-0">

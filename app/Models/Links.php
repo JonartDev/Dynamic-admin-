@@ -11,6 +11,7 @@ class Links extends Model
     protected $table = 'links';
     protected $fillable = [
         'name',
+        'slug',
         'links',
         'category',
         'isMobile',

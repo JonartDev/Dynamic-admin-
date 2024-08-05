@@ -14,6 +14,16 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-6">
+
+                            <div class="mb-4">
+                                <label for="category" class="block text-sm font-medium text-gray-700">Select Category</label>
+                                <select id="category" wire:model="SelectedSlug" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                                    <option value="">Select a category</option>
+                                    @foreach($slug as $category)
+                                    <option value="{{ $category->name }}">{{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                             <div class="mb-3">
                                 <label>{{ __('translate.name') }}</label>
                                 <input type="text" wire:model="name" class="form-control">
@@ -110,6 +120,16 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-md-6">
+                            <div class="mb-4">
+                                <label for="category" class="block text-sm font-medium text-gray-700">Select Category</label>
+                                
+                                <select id="category" wire:model="SelectedSlug" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
+                                    <option value="">Select a category</option>
+                                    @foreach($slug as $category)
+                                    <option value="{{ $category->name }}">{{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                             <div class="mb-3">
                                 <label>{{ __('translate.name') }}</label>
                                 <input type="text" wire:model="name" class="form-control">

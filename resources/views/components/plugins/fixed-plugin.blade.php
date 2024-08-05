@@ -48,7 +48,7 @@
             <div class="form-check form-switch ps-0">
                 <input class="form-check-input mt-1 ms-auto" type="checkbox" id="navbarFixed" onclick="navbarFixed(this)">
             </div>
-            <hr class="horizontal dark my-sm-4">
+            <!-- <hr class="horizontal dark my-sm-4"> -->
 
         </div>
     </div>
